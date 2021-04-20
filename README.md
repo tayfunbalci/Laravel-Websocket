@@ -1,2 +1,2 @@
-# Laravel-Websocket
+# Laravel Websocket
 WebSockets for Laravel
