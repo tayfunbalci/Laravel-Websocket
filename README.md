@@ -46,13 +46,14 @@ Next, you should make sure to use Pusher as your broadcasting driver. This can b
 ```
 BROADCAST_DRIVER=pusher
 ```
-Other environment variables that need to be updated
+
+Other environment variables that need to be updated:
 ```
 QUEUE_CONNECTION=database
 
-PUSHER_APP_ID=local
-PUSHER_APP_KEY=local
-PUSHER_APP_SECRET=local
+PUSHER_APP_ID=test
+PUSHER_APP_KEY=test
+PUSHER_APP_SECRET=test
 PUSHER_APP_CLUSTER=mt1
 
 MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
