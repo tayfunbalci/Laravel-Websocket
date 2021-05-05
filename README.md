@@ -47,7 +47,7 @@ Next, you should make sure to use Pusher as your broadcasting driver. This can b
 BROADCAST_DRIVER=pusher
 ```
 
-Other environment variables that need to be updated:
+Other environment variables that need to be updated in the `.env` file:
 ```
 QUEUE_CONNECTION=database
 
