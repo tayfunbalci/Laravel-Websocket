@@ -33,6 +33,39 @@ Next, you need to publish the WebSocket configuration file:
 php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="config"
 ```
 
+##Pusher Replacement
+###Requirements
+To make use of the Laravel WebSockets package in combination with Pusher, you first need to install the official Pusher PHP SDK.
+
+If you are not yet familiar with the concept of Broadcasting in Laravel, please take a look at the [Laravel documentation](https://laravel.com/docs/6.0/broadcasting).
+```
+composer require pusher/pusher-php-server
+```
+
+Next, you should make sure to use Pusher as your broadcasting driver. This can be achieved by setting the BROADCAST_DRIVER environment variable in your .env file:
+```
+BROADCAST_DRIVER=pusher
+```
+
+###Pusher Configuration
+When broadcasting events from your Laravel application to your WebSocket server, the default behavior is to send the event information to the official Pusher server. But since the Laravel WebSockets package comes with its own Pusher API implementation, we need to tell Laravel to send the events to our own server.
+
+To do this, you should add the host and port configuration key to your config/broadcasting.php and add it to the pusher section. The default port of the Laravel WebSocket server is 6001.
+```
+'pusher' => [
+    'driver' => 'pusher',
+    'key' => env('PUSHER_APP_KEY'),
+    'secret' => env('PUSHER_APP_SECRET'),
+    'app_id' => env('PUSHER_APP_ID'),
+    'options' => [
+        'cluster' => env('PUSHER_APP_CLUSTER'),
+        'encrypted' => true,
+        'host' => '127.0.0.1',
+        'port' => 6001,
+        'scheme' => 'http'
+    ],
+],
+```
 
 ## License
 
