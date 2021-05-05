@@ -60,8 +60,8 @@ To do this, you should add the host and port configuration key to your config/br
     'options' => [
         'cluster' => env('PUSHER_APP_CLUSTER'),
         'encrypted' => true,
-        'host' => '127.0.0.1',
-        'port' => 6001,
+        'host' => env('MIX_PUSHER_APP_SERVER','127.0.0.1'),
+        'port' => env('MIX_PUSHER_APP_PORT',6001),
         'scheme' => 'http'
     ],
 ],
