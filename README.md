@@ -84,6 +84,34 @@ To do this, you should add the host and port configuration key to your `config/b
     ],
 ```
 
+## Client Side Installation
+### Pusher Channels
+Laravel Echo is a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by your server-side broadcasting driver. You may install Echo via the NPM package manager. In this example, we will also install the `pusher-js` package since we will be using the Pusher Channels broadcaster:
+```
+npm install --save-dev laravel-echo pusher-js
+```
+
+Once Echo is installed, you are ready to create a fresh Echo instance in your application's JavaScript. A great place to do this is at the bottom of the `resources/js/bootstrap.js` file that is included with the Laravel framework. By default, an example Echo configuration is already included in this file - you simply need to uncomment it:
+```
+import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    wsHost: process.env.MIX_PUSHER_APP_SERVER,
+    wsPort: process.env.MIX_PUSHER_APP_PORT,
+    forceTLS: false,
+    disableStats: true
+});
+```
+
+Once you have uncommented and adjusted the Echo configuration according to your needs, you may compile your application's assets:
+```
+npm run dev
+```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
