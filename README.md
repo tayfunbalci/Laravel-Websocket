@@ -46,6 +46,20 @@ Next, you should make sure to use Pusher as your broadcasting driver. This can b
 ```
 BROADCAST_DRIVER=pusher
 ```
+Other environment variables that need to be updated
+```
+QUEUE_CONNECTION=database
+
+PUSHER_APP_ID=local
+PUSHER_APP_KEY=local
+PUSHER_APP_SECRET=local
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+MIX_PUSHER_APP_SERVER="127.0.0.1"
+MIX_PUSHER_APP_PORT="6001"
+```
 
 ### Pusher Configuration
 When broadcasting events from your Laravel application to your WebSocket server, the default behavior is to send the event information to the official Pusher server. But since the Laravel WebSockets package comes with its own Pusher API implementation, we need to tell Laravel to send the events to our own server.
