@@ -42,7 +42,7 @@ If you are not yet familiar with the concept of Broadcasting in Laravel, please 
 composer require pusher/pusher-php-server
 ```
 
-Next, you should make sure to use Pusher as your broadcasting driver. This can be achieved by setting the BROADCAST_DRIVER environment variable in your .env file:
+Next, you should make sure to use Pusher as your broadcasting driver. This can be achieved by setting the BROADCAST_DRIVER environment variable in your `.env` file:
 ```
 BROADCAST_DRIVER=pusher
 ```
@@ -50,7 +50,7 @@ BROADCAST_DRIVER=pusher
 ### Pusher Configuration
 When broadcasting events from your Laravel application to your WebSocket server, the default behavior is to send the event information to the official Pusher server. But since the Laravel WebSockets package comes with its own Pusher API implementation, we need to tell Laravel to send the events to our own server.
 
-To do this, you should add the host and port configuration key to your config/broadcasting.php and add it to the pusher section. The default port of the Laravel WebSocket server is 6001.
+To do this, you should add the host and port configuration key to your `config/broadcasting.php` and add it to the pusher section. The default port of the Laravel WebSocket server is 6001.
 ```
 'pusher' => [
     'driver' => 'pusher',
@@ -65,6 +65,23 @@ To do this, you should add the host and port configuration key to your config/br
         'scheme' => 'http'
     ],
 ],
+```
+
+### Configuring WebSocket Apps
+`config/websockets.php` Dosyanıza ek uygulamalar ekleyebilirsiniz.
+```
+'apps' => [
+        [
+            'id' => env('PUSHER_APP_ID'),
+            'name' => env('APP_NAME'),
+            'key' => env('PUSHER_APP_KEY'),
+            'secret' => env('PUSHER_APP_SECRET'),
+            'path' => env('PUSHER_APP_PATH'),
+            'capacity' => null,
+            'enable_client_messages' => false,
+            'enable_statistics' => true,
+        ],
+    ],
 ```
 
 ## License
