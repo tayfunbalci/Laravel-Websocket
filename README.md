@@ -83,7 +83,7 @@ To do this, you should add the host and port configuration key to your `config/b
 ```
 
 ### Configuring WebSocket Apps
-`config/websockets.php` Dosyanıza ek uygulamalar ekleyebilirsiniz.
+You may add additional apps in your `config/websockets.php` file.
 ```
 'apps' => [
         [
